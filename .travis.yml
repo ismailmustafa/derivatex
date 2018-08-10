@@ -23,4 +23,4 @@ deploy:
     - derivatex.linux.amd64
   on:
     repo: ismailmustafa/derivatex
-    branch: travis-ci
+    branch: master
