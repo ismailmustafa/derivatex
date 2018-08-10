@@ -3,6 +3,9 @@ sudo: false
 go:
   - "1.10.3"
 
+before_install:
+  - go get github.com/mitchellh/gox
+
 script:
   - go get -t -v ./...
   - diff -u <(echo -n) <(gofmt -d .)
