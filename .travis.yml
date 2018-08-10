@@ -11,16 +11,16 @@ script:
   - diff -u <(echo -n) <(gofmt -d .)
   - go vet $(go list ./... | grep -v /vendor/)
   - go test -v -race ./...
-  - gox -os="linux darwin windows" -arch="amd64"
+  - gox -os="linux darwin windows" -arch="amd64" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...;
 
 deploy:
   provider: releases
   api_key:
     secure: WULiJ0oEOB/oen6Mu/kxJW5rIfS58Jyajkciaa6TvFVeVLpu+TpD3y3/WfLXAQhM3NYipx3avKyDUqSj1BvG96C4TcUfCpvmnFBlEsgqjuoExfXPpnQXV+rXDOIIJUOb7oqGZ252HOkEgT6F5ZCiiuH9mY6XhyfvlHNd60Y0SHzz5IA+sEH2kxHTaBu1yGp2lRd/l5DIL/7C2/gH1kB45Wc7RosqdlyfP57BKrINiMJ8fjmiwI1HLqoqr7f/3ugJULnYZiR+7F1/MbyoYeBYyeUL/nq8jIlwf6cuipeuBwD5lG2dirtgl2Bh5GtbTZCmvaaqd0YpojEnK2afZSdm8k9o/09InYgoOTtq4oY1PoZEsGc/Rhzdor28UPXYumnUw9ptb5hiVfXlD6Ryio6OrbPcwkZBFddEmaqOF03i/1uz2n2L4Nmiaz3rBB8hc4W0h8uvhdeZLKaqC7onxjABXWaS+xaAxj8nZGYdGd/1tcWsshNAiRR0YKHPcR9YmxlDWi+lsVvvYseqafIY9BjTXr6ssa2l7F7dPoUmYGv/vwl7+47KmaMMfsecdBbeSfhO/mYXBPwlKF6eIoiYPKfvoo/m5z/f6WD5ViT050u/tO3YjXPNBR51keMZ8/RMZ6m2tbW6XFeTT9VXwmsRk6kcCCZyJwLzm05sHA4Ii3kBd14=
   file:
-    - derivatex.windows.amd64.exe
-    - derivatex.darwin.amd64
-    - derivatex.linux.amd64
+    - derivatex_windows_amd64.exe
+    - derivatex_darwin_amd64
+    - derivatex_linux_amd64
   on:
     repo: ismailmustafa/derivatex
     branch: master
