@@ -24,4 +24,4 @@ deploy:
     - derivatex_linux_amd64
   on:
     repo: ismailmustafa/derivatex
-    branch: master
+    tags: true
